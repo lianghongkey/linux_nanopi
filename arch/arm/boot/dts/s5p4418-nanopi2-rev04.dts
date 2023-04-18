@@ -23,15 +23,6 @@
 	model = "FriendlyElec NanoPi Fire2";
 	compatible = "friendlyelec,nanopi-fire2", "nexell,s5p4418";
 
-	snd_null: snd_null@10 {
-		#sound-dai-cells = <0>;
-		compatible = "nexell,snd-null";
-
-		#address-cells = <1>;
-		#size-cells = <0>;
-		reg = <0 0>;
-	};
-
 	/delete-node/ wlan;
 	/delete-node/ bt_bcm;
 };
@@ -50,22 +41,6 @@
 	status = "disabled";
 };
 
-&dvfs {
-	supply_optional = "vdd_arm_dummy";
-};
-
-&simple_card {
-	/delete-property/ simple-audio-card,widgets;
-	/delete-property/ simple-audio-card,routing;
-
-	simple-audio-card,dai-link@0 {
-		codec {
-			sound-dai = <&snd_null>;
-		};
-	};
-};
-
-&cfg_wlanen {
-	/delete-property/ nexell,pin-dir;
-	/delete-property/ nexell,pin-val;
+&dp_drm_lvds{
+	status = "disabled";
 };
